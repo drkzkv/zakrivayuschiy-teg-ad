@@ -39,3 +39,15 @@ function setButtonText(heart, button) {
     );
   }
 }
+
+const saveButton = document.querySelector('.dialog_button'); 
+const modal = document.querySelector('#continue_id');        
+const closeButton = document.querySelector('.button_continue'); 
+
+saveButton.onclick = () => {
+  modal.showModal();
+};
+
+closeButton.onclick = () => {
+  modal.close(); 
+};

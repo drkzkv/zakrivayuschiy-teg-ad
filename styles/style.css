@@ -4,7 +4,6 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
@@ -13,4 +12,330 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-image: repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+                    repeating-linear-gradient(#d3d3d3 0 2px, transparent 2px 4px),
+                    linear-gradient(#e7e7e7 0.01%, #1a1a1a 100%);
 }
+
+.header {
+  max-width: 696px;
+  height: 364px;
+  border: 2px solid #000000;
+  margin: 0 auto;
+  background-color: white;
+  margin-top: 60px;
+}
+
+.header_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header_title {
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: clamp(3.063rem, 2.71rem + 1.5vw, 4.063rem);
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.header_text {
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: clamp(0.875rem, 0.677rem + 0.85vw, 1.438rem);
+  text-transform: uppercase;
+}
+
+.post {
+  max-width: 696px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0 auto;
+  gap: 45px;
+}
+
+.post_title_container {
+  height: 31px;
+  display: flex;
+  align-items: center;
+  border: 2px solid #000000;
+}
+
+.post_title {
+  font-family: var(--main-font, "Inter");
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.post_image_container {
+  position: relative;
+}
+
+.post_img {
+  width: 100%;
+  height: 696px;
+  height: auto;
+  display: block;
+  object-fit: cover; 
+}
+
+.post-img-label {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #000000;
+  opacity: 0.5;
+  text-shadow:
+    -1px -1px 0 white,
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white;
+}
+
+.post_text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 27px 23px 0 25px;
+  border: 2px solid #000000;
+}
+
+.post_text {
+  font-family: var(--main-font, "Inter");
+  font-size: 18px;
+  color: #000000;
+  line-height: 21px;
+}
+
+.post_button_container {
+  display: flex;
+  flex-direction: row;
+  gap: 19px;
+  justify-content: end;
+  padding-bottom: 15px;
+}
+
+.card__icon-button {
+  border: none;       
+  background: transparent; 
+  padding: 0;         
+  cursor: pointer;
+}
+
+.card__like-button {
+  width: 130px;
+  height: 38px;
+  border: 3px solid #000000;
+  background-color: transparent;
+  padding: 9px 17px;
+}
+
+.button__text {
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: 14px;
+  color: #000000;
+  margin: 0 auto;
+}
+
+.dialog {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+  position: relative;
+  inset: 0;
+  border: none;
+  padding: 30px;
+}
+
+.dialog_button {
+  width: 335px;
+  height: 55px;
+  border: 2px solid #000000;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.button_text {
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: 14px;
+  color: #000000;
+}
+
+.dialog_continue[open] {
+  width: 353px;
+  height: 191px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dialog_continue::backdrop {
+  background-color: rgb(0 0 0 / 0.7);
+}
+
+.continue_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.continue_text {
+  font-family: var(--accent-font,"PressStart2P");
+  font-size: 14px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.button_continue  {
+  width: 293px;
+}
+
+
+
+.card__like-button, .dialog_button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: none; 
+
+  transition: box-shadow 0.3s ease;
+}
+
+.button__text, .button_text, .dialog_button svg {
+  position: relative;
+  z-index: 2; 
+  color: white;
+  fill: white;
+  mix-blend-mode: difference; 
+}
+
+.card__like-button::before, .dialog_button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 1;
+
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.card__like-button:hover::before, .dialog_button:hover::before {
+  transform: translateX(0);
+}
+
+
+
+.card__like-button:focus-visible, .dialog_button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 #000000;
+}
+
+
+.card__icon-button {
+  border: 2px solid transparent; 
+  padding: 2px;
+
+  transition: border 0.3s ease;
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border: 2px solid #000000; 
+}
+
+
+.like-icon {
+  display: block;
+  overflow: visible; 
+}
+
+.like-icon .contour {
+  fill: var(--contour-color, #000000);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+  fill: var(--animation-fill-color, #FF0000);
+}
+
+.like-icon:hover .core {
+  fill: var(--contour-color, #000000); 
+  transition-delay: 0s;
+  transition-duration: 0.3s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color, #000000); 
+  transition-delay: 0.05s;
+  transition-duration: 0.3s;
+}
+
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color, #FF0000); 
+  transition-delay: 0s;
+  transition-duration: 0.3s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color, #FF0000); 
+  transition-delay: 0.05s;
+  transition-duration: 0.3s;
+}
+
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color, #FF0000); 
+  transition: fill 0.3s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color, #FF0000); 
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color, #FF0000); 
+  transition: fill 0.3s 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: scale-heart 0.3s ease-in 0.3s 1 alternate;
+}
+
+.like-icon.is-liked .sparks {
+  transform-origin: center;
+  animation: pouring_sparks 0.3s ease-in 0.3s 1 alternate;
+}
+
+
+
+
